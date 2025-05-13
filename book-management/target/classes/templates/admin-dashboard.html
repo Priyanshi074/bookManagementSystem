@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+        .dashboard-card {
+            min-width: 220px;
+            margin: 20px;
+            transition: box-shadow .2s;
+        }
+        .dashboard-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+        }
+        .dashboard-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Book Management</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container text-center mt-5">
+    <h2 class="mb-4">Welcome, Admin!</h2>
+    <div class="dashboard-links">
+        <div class="card dashboard-card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Manage Books</h5>
+                <p class="card-text">Add, edit, or remove books from the library.</p>
+                <a th:href="@{/admin/books}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+        <div class="card dashboard-card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">View Book Requests</h5>
+                <p class="card-text">Approve or reject book issue requests from students.</p>
+                <a th:href="@{/admin/requests}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+        <div class="card dashboard-card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Logout</h5>
+                <p class="card-text">Sign out of your admin account.</p>
+                <a th:href="@{/logout}" class="btn btn-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
