@@ -8,44 +8,33 @@ A web-based Book Management System built using **Spring Boot**, **MySQL**, and *
 
 - 📘 **Add / Update / Delete Books**
 - 🔍 **Search Books by Title or Author**
-- 👥 **User Authentication** (Spring Security + BCryptPasswordEncoder)
+- 👥 **User Authentication** using Spring Security + BCryptPasswordEncoder
 - 🗂️ **Role-based Access Control** (Admin / User)
 - 📊 **Dashboard** with book statistics
 - 🗄️ **Persistent Data** stored in MySQL
+- ✅ **Login & Authentication** with hashed passwords
+- 📑 **Data Validation** on both frontend and backend
 
 ---
 
-## 🛠️ Technology Stack
+## 🧑‍💻 Technologies Used
 
-| Layer              | Technology Used                        |
-|-------------------|----------------------------------------|
-| Backend            | Spring Boot, Spring MVC, Spring Data JPA |
-| Frontend           | JSP, HTML5, CSS3, Bootstrap 4          |
-| Database           | MySQL                                  |
-| ORM                | Hibernate (via Spring Data JPA)        |
-| Authentication     | Spring Security, BCryptPasswordEncoder |
-| Build Tool         | Maven                                  |
-| IDE                | IntelliJ IDEA / Eclipse                |
-| Server             | Apache Tomcat (embedded in Spring Boot) |
-
----
-
-## 🧩 Modules
-
-- **Login & Authentication**: Secure login with hashed passwords
-- **Book Management**: Admins can add/edit/delete books
-- **Book Browsing**: Users can view and search books
-- **User Roles**: Admin and general user separation
-- **Data Validation**: On both frontend and backend
+- Java (Spring Boot, Servlets, JSP)
+- Spring Security
+- MySQL (JDBC)
+- Apache Tomcat 4.6
+- IntelliJ IDEA / Eclipse
+- HTML / CSS
 
 ---
 
 ## 🗃️ Database Schema
 
-**Main Tables:**
+### Main Tables
+
 - `users(user_id, username, password, role)`
 - `books(book_id, title, author, category, isbn, quantity)`
-- `transactions(tx_id, user_id, book_id, issue_date, return_date)` (optional for issuing/returning)
+- `transactions(tx_id, user_id, book_id, issue_date, return_date)` _(optional for issuing/returning)_
 
 ---
 
@@ -60,9 +49,53 @@ A web-based Book Management System built using **Spring Boot**, **MySQL**, and *
 
 ---
 
-## 📦 Installation
+## 📦 Installation Guide
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/your-username/book-management-system.git
-   cd book-management-system
+### 1. Clone the Repository
+
+git clone https://github.com/your-username/book-management-system.git
+cd book-management-system
+
+
+---
+
+### 2. MySQL Configuration
+
+#### ➤ Create the Database
+
+Open your MySQL command-line client or a GUI like phpMyAdmin and run:
+
+CREATE DATABASE bookdb;
+
+#### ➤ Update `application.properties`
+
+Navigate to:  
+`src/main/resources/application.properties`  
+
+and add the following configuration:
+# code  
+spring.datasource.url=jdbc:mysql://localhost:3306/bookdb
+spring.datasource.username=root
+spring.datasource.password=yourpassword
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+> ⚠️ **Note:** Replace `yourpassword` with your actual MySQL password.
+
+#### ➤ Ensure MySQL Connector is Included
+
+Make sure your `pom.xml` includes the MySQL JDBC Driver:
+
+<dependency> <groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> <scope>runtime</scope> </dependency> ```
+
+3. Run the Application
+Start the Spring Boot application by running:
+
+./mvnw spring-boot:run
+
+Once the application starts, Hibernate will automatically create the required tables in your bookdb MySQL database.
+
+Ready to contribute?
+Check out our CONTRIBUTING.md for guidelines and best practices.
+
