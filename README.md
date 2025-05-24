@@ -53,8 +53,10 @@ A web-based Book Management System built using **Spring Boot**, **MySQL**, and *
 
 ### 1. Clone the Repository
 
+```bash
 git clone https://github.com/your-username/book-management-system.git
 cd book-management-system
+```
 
 
 ---
@@ -64,8 +66,9 @@ cd book-management-system
 #### ➤ Create the Database
 
 Open your MySQL command-line client or a GUI like phpMyAdmin and run:
-
-CREATE DATABASE bookdb;
+```bash
+CREATE DATABASE bookmanagementdb;
+```
 
 #### ➤ Update `application.properties`
 
@@ -73,29 +76,33 @@ Navigate to:
 `src/main/resources/application.properties`  
 
 and add the following configuration:
-# code  
+```bash
 spring.datasource.url=jdbc:mysql://localhost:3306/bookdb
 spring.datasource.username=root
 spring.datasource.password=yourpassword
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-
+```
 > ⚠️ **Note:** Replace `yourpassword` with your actual MySQL password.
 
 #### ➤ Ensure MySQL Connector is Included
 
 Make sure your `pom.xml` includes the MySQL JDBC Driver:
-
-<dependency> <groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> <scope>runtime</scope> </dependency> ```
-
+```bash
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <scope>runtime</scope>
+</dependency>
+```
 3. Run the Application
 Start the Spring Boot application by running:
-
+```bash
 ./mvnw spring-boot:run
-
+```
 Once the application starts, Hibernate will automatically create the required tables in your bookdb MySQL database.
 
-Ready to contribute?
-Check out our CONTRIBUTING.md for guidelines and best practices.
 
+If you want to contribute?
+Check out our CONTRIBUTING.md for guidelines and best practices.
